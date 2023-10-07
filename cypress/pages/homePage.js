@@ -1,11 +1,11 @@
 class homePage {
-  //   elements = {
-  //     loginBtn: () => cy.get('#signin'),
-  //     logOffBtn: () => cy.get('#logout'),
-  //   }
-  //   clickOnSignin() {
-  //     this.elements.loginBtn().click()
-  //   }
+  elements = {
+    signUpBtn: () => cy.get('#header-sign-up > span').first(),
+  }
+
+  clickOnSignUpBtn() {
+    this.elements.signUpBtn().click()
+  }
 }
 
 module.exports = new homePage()

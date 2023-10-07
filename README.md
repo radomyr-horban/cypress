@@ -1,26 +1,24 @@
 # Task 2: Cypress
 
-### General requirements
+### General requirements:
 
 - Install a git client such as [git bash](https://git-scm.com/downloads)
 - Node version: 18 [(Node.js)](https://nodejs.org/en)
 
-#### Clone the repository
+#### Clone the repository:
 
     git clone https://github.com/radomyr-horban/cypress.git
 
-### Installing dependencies
+### Installing dependencies:
 
     npm ci
 
-#### To run the tests go to the root of the project and run
+#### To run the tests go to the root of the project and run:
 
-    npm run
+    npm run cypress:run
 
-#### To generate a Playwright's Allure report of test results run
+<!-- ! Provide explanations what Launchpad is  -->
 
-    npm run
+#### To open the Cypress Launchpad run:
 
-#### To open the Playwright's Allure report in a browser run
-
-    npm run
+    npm run cypress:open
