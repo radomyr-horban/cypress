@@ -1,0 +1,14 @@
+{
+  "SMS API": "/resources/topic/messaging",
+  "Verify API": "/resources/topic/verify-api",
+  "SIP Trunking": "/resources/topic/sip-trunking",
+
+  "Storage": "/resources/topic/storage",
+  "Fax": "/resources/topic/fax",
+  "IoT SIM Card": "/resources/topic/wireless",
+
+  "Product updates": "/resources/category/new-products-and-features",
+  "Guides and tutorials": "/resources/category/guides-and-tutorials",
+  "News and events": "/resources/category/news-and-events",
+  "Expert insights": "/resources/category/insights-and-resources"
+}

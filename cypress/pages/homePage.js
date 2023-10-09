@@ -9,10 +9,14 @@ class homePage {
     subNavigation: {
       supportCenterLink: () =>
         cy
-          // .get('[role="menuitem"] a[href="https://support.telnyx.com/en/"]')
           .get('[role="menuitem"]')
-          .contains('Support Center') //! span - NOT link???
-          .invoke('removeAttr', 'target'), //! Can I use this workaround??
+          .contains('Support Center')
+          .invoke('removeAttr', 'target'),
+      blogLink: () =>
+        cy
+          .get('[role="menuitem"]')
+          .contains('Blog')
+          .invoke('removeAttr', 'target'),
     },
   }
 
@@ -22,6 +26,9 @@ class homePage {
   }
   clickOnSupportCenterLink() {
     this.elements.subNavigation.supportCenterLink().click()
+  }
+  clickOnBlogLink() {
+    this.elements.subNavigation.blogLink().click()
   }
 
   clickOnSignUpBtn() {
