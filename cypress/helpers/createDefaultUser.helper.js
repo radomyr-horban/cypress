@@ -3,7 +3,7 @@
 import signUpPage from '../pages/signUpPage'
 
 // export async function createDefaultUser(signUpPage, userData) {
-export async function createDefaultUser(userData) {
+export async function signUpDefaultUser(userData) {
   signUpPage.clickOnEmailInput()
   signUpPage.setEmailInput(userData.email)
 
