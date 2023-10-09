@@ -4,6 +4,8 @@ class homePage {
 
     navigation: {
       resourcesLink: () => cy.get('nav').contains('Resources'),
+      solutionsLink: () => cy.get('nav').contains('Solutions'),
+      pricingLink: () => cy.get('nav').contains('Pricing'),
     },
 
     subNavigation: {
@@ -17,22 +19,36 @@ class homePage {
           .get('[role="menuitem"]')
           .contains('Blog')
           .invoke('removeAttr', 'target'),
+      globalNumbersLink: () =>
+        cy
+          .get('[role="menuitem"]')
+          .contains('Global Numbers')
+          .invoke('removeAttr', 'target'),
     },
   }
 
-  //!navigation
+  //! clickers
+  clickOnSignUpBtn() {
+    this.elements.signUpBtn().click()
+  }
+
+  //! navigation
   clickOnResourcesLink() {
     this.elements.navigation.resourcesLink().click()
   }
+  clickOnSolutionsLink() {
+    this.elements.navigation.solutionsLink().click()
+  }
+
+  //! sub-navigation
   clickOnSupportCenterLink() {
     this.elements.subNavigation.supportCenterLink().click()
   }
   clickOnBlogLink() {
     this.elements.subNavigation.blogLink().click()
   }
-
-  clickOnSignUpBtn() {
-    this.elements.signUpBtn().click()
+  clickOnGlobalNumbersLink() {
+    this.elements.subNavigation.globalNumbersLink().click()
   }
 }
 
