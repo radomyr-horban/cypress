@@ -3,23 +3,56 @@ class numbersPricingPage {
     heading: () => cy.get('main h1'),
     heroOverviewText: () =>
       cy.get('section[contenttype="heroOverview"] > div > div > p'),
-    seeIndustriesLink: () => cy.get('a[title="See industries"]'),
-    seeUseCasesLink: () => cy.get('a[title="See use cases"]'),
 
-    useCasesSectionStrongText: () => cy.get('section[id="use-cases"] strong'),
-    useCasesSectionHeading: () => cy.get('section[id="use-cases"] h2'),
+    payAsYouGoBoxLink: () => cy.get('a[title="Pay as you go - see plan"]'),
 
-    filterDropdownBtn: () => cy.get('button[id="department-filter"]'),
-    // filterDropdownList: () => cy.get('button[id="department-filter"]+div'),
-    filterDropdownList: () => cy.get('div[role="listbox"]'),
-    filterDropdownListOptions: () => cy.get('div[role="option"] a'),
+    volumeBasedPricingBoxLink: () =>
+      cy.get('a[title="See plan for Volume based pricing"]'),
+
+    countryFilterDropdownBtn: () => cy.get('button[id="country-filter"]'),
+    currencyFilterDropdownBtn: () => cy.get('button[id="currency-filter"]'),
+
+    countryFilterDropdownList: () => cy.get('button[id="country-filter"]+div'),
+    currencyFilterDropdownList: () =>
+      cy.get('button[id="currency-filter"]+div'),
+
+    numberPricingTableCaption: () =>
+      cy.get('table[id="Number-pricing"] > caption'),
+
+    numberPricingTableData: () => cy.get('table[id="Number-pricing"] td'),
+
+    countryFilterDropdownList: () =>
+      cy.get('button[id="country-filter"] + div'),
+    currencyFilterDropdownList: () =>
+      cy.get('button[id="currency-filter"] + div'),
+
+    //! canada option (make a method)
+    // filterDropdownOptionCanada: () =>
+    //   cy.get('div[role="option"] a').contains('Canada'),
   }
 
-  clickOnSeeUseCasesLink() {
-    this.elements.seeUseCasesLink().click()
+  clickOnPayAsYouGoBoxLink() {
+    this.elements.payAsYouGoBoxLink().click()
   }
-  clickOnFilterDropdownBtn() {
-    this.elements.filterDropdownBtn().click()
+
+  clickOnCountryFilterDropdownBtn() {
+    this.elements.countryFilterDropdownBtn().click({ force: true })
+  }
+  clickOnCurrencyFilterDropdownBtn() {
+    // this.elements.currencyFilterDropdownBtn().click({ force: true })
+    this.elements.currencyFilterDropdownBtn().click()
+  }
+
+  //! set a country
+  selectCountryOption(value) {
+    cy.get('button[id="country-filter"]+div div[role="option"] a')
+      .contains(`${value}`)
+      .click()
+  }
+  selectCurrencyOption(value) {
+    cy.get('button[id="currency-filter"]+div div[role="option"]')
+      .contains(`${value}`)
+      .click()
   }
 }
 

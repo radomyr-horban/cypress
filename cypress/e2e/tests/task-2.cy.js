@@ -12,10 +12,11 @@ import blogPage from '../../pages/blogPage'
 import solutionsPage from '../../pages/solutionsPage'
 import numbersPricingPage from '../../pages/numbersPricingPage'
 
-// !fixtures
+//! fixtures
 import supportCenterPageFixture from '../../fixtures/supportCenterPageFixture.json'
 import blogPageFixture from '../../fixtures/blogPageFixture.json'
 import solutionsPageFixture from '../../fixtures/solutionsPageFixture.json'
+import globalNumbersFixture from '../../fixtures/globalNumbersFixture.json'
 
 describe('Telnyx website', () => {
   beforeEach(() => {
@@ -212,6 +213,7 @@ describe('Telnyx website', () => {
       )
 
       //! new
+
       // // solutionsPage.elements.filterDropdownBtn().scrollIntoView()
       // solutionsPage.clickOnFilterDropdownBtn()
       // option.click({ force: true })
@@ -231,9 +233,11 @@ describe('Telnyx website', () => {
   })
 
   // todo
-  xit('9. should allow a user to use filters on the "Numbers pricing" page', () => {
+  it('9. should allow a user to use filters on the "Numbers pricing" page', () => {
     //! navigation
     homePage.elements.navigation.pricingLink().should('be.visible')
+    homePage.clickOnPricingLink()
+    homePage.elements.subNavigation.globalNumbersLink().should('be.visible')
     homePage.clickOnGlobalNumbersLink()
 
     //! pricing-numbers page
@@ -246,30 +250,47 @@ describe('Telnyx website', () => {
         'Get flexible pricing for Local, National and Toll-free Numbers, with the option to pay as you go or volume-based pricing.'
       )
 
-    // numbersPricingPage.elements.seeIndustriesLink().should('be.visible')
-    // numbersPricingPage.elements.seeUseCasesLink().should('be.visible')
-
-    numbersPricingPage.clickOnSeeUseCasesLink()
-    cy.url().should('include', '#use-cases')
+    numbersPricingPage.elements.payAsYouGoBoxLink().should('be.visible')
+    numbersPricingPage.elements.volumeBasedPricingBoxLink().should('be.visible')
 
     numbersPricingPage.elements
-      .useCasesSectionStrongText()
-      .contains(`use cases`, {
-        matchCase: false,
-      })
+      .countryFilterDropdownBtn()
       .should('be.visible')
-
+      .and('have.text', 'United States')
     numbersPricingPage.elements
-      .useCasesSectionHeading()
+      .currencyFilterDropdownBtn()
       .should('be.visible')
-      .and('have.text', 'Maintain control with custom, feature-rich tooling.')
+      .and('have.text', 'USD')
 
+    numbersPricingPage.elements.numberPricingTableCaption().should('be.visible')
+    numbersPricingPage.elements.numberPricingTableData().should('contain', '$')
+
+    numbersPricingPage.clickOnPayAsYouGoBoxLink()
+    cy.url().should('include', '#pay-as-you-go')
+
+    //! country dropdown
+    numbersPricingPage.clickOnCountryFilterDropdownBtn() //!open dropdown
+    numbersPricingPage.elements.countryFilterDropdownList().should('be.visible')
+
+    // todo: fixture
+    numbersPricingPage.selectCountryOption('Canada')
+    cy.url().should('include', '/ca')
+    numbersPricingPage.elements.heading().should('contain', 'Canada')
     numbersPricingPage.elements
-      .filterDropdownBtn()
-      .should('be.visible')
-      .and('have.text', 'Filter by department')
+      .countryFilterDropdownBtn()
+      .should('have.text', 'Canada')
 
-    numbersPricingPage.clickOnFilterDropdownBtn()
-    numbersPricingPage.elements.filterDropdownList().should('be.visible')
+    //!currency dropdown
+    numbersPricingPage.clickOnCurrencyFilterDropdownBtn()
+    numbersPricingPage.elements
+      .currencyFilterDropdownList()
+      .should('be.visible')
+
+    // todo: fixture
+    numbersPricingPage.selectCurrencyOption('EUR')
+    numbersPricingPage.elements.numberPricingTableData().should('contain', '€')
+    numbersPricingPage.elements
+      .currencyFilterDropdownBtn()
+      .should('have.text', 'EUR')
   })
 })

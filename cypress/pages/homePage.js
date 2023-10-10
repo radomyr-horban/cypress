@@ -39,6 +39,9 @@ class homePage {
   clickOnSolutionsLink() {
     this.elements.navigation.solutionsLink().click()
   }
+  clickOnPricingLink() {
+    this.elements.navigation.pricingLink().click()
+  }
 
   //! sub-navigation
   clickOnSupportCenterLink() {
