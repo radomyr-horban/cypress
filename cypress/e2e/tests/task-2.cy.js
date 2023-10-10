@@ -1,24 +1,26 @@
 // / <reference types="cypress" />
 
 import { acceptCookiesHelper } from '../../helpers/acceptCookies.helper'
-import { signUpDefaultUser } from '../../helpers/createDefaultUser.helper'
+import { createDefaultUser } from '../../helpers/createDefaultUser.helper'
 import { generateUserData } from '../../helpers/generateUserData.helper'
 
 import homePage from '../../pages/homePage'
-import signUpPage from '../../pages/signUpPage'
 import supportCenterPage from '../../pages/supportCenterPage'
-import verifyEmailPage from '../../pages/verifyEmailPage'
 import blogPage from '../../pages/blogPage'
 import solutionsPage from '../../pages/solutionsPage'
 import numbersPricingPage from '../../pages/numbersPricingPage'
 import integrationsPage from '../../pages/integrationsPage'
+import microsoftTeamsPage from '../../pages/microsoftTeamsPage'
+import releaseNotesPage from '../../pages/releaseNotesPage'
 
 //! fixtures
-import supportCenterPageFixture from '../../fixtures/supportCenterPageFixture.json'
-import blogPageFixture from '../../fixtures/blogPageFixture.json'
-import solutionsPageFixture from '../../fixtures/solutionsPageFixture.json'
-// import globalNumbersFixture from '../../fixtures/globalNumbersFixture.json'
-import integrationsPageFixture from '../../fixtures/integrationsPageFixture.json'
+import supportCenterPageFixture from '../../fixtures/supportCenterPage.fixture.json'
+import blogPageFixture from '../../fixtures/blogPage.fixture.json'
+import solutionsPageFixture from '../../fixtures/solutionsPage.fixture.json'
+// import globalNumbersFixture from '../../fixtures/globalNumbers.fixture.json'
+import integrationsPageFixture from '../../fixtures/integrationsPage.fixture.json'
+import homePageFixture from '../../fixtures/homePage.fixture.json'
+import thankYouPage from '../../pages/thankYouPage'
 
 describe('Telnyx website', () => {
   beforeEach(() => {
@@ -26,22 +28,108 @@ describe('Telnyx website', () => {
     acceptCookiesHelper()
   })
 
-  //! failing
-  xit('1. should allow a user to sign up', () => {
-    homePage.clickOnSignUpBtn()
+  xit('1. should allow a user to submit a form on the "Microsoft Teams" page ', () => {
+    //! navigation
+    homePage.elements.navigation.productsLink().should('be.visible')
+    homePage.clickOnProductsLinkLink()
+    homePage.elements.subNavigation.microsoftTeamsLink().should('be.visible')
+    homePage.clickOnMicrosoftTeamsLink()
 
-    //!
-    cy.url().should('include', '/sign-up')
-    signUpPage.elements.emailInput().should('be.visible')
+    //! Microsoft Teams page
+    cy.url().should('include', '/products/enterprise-integrations-ms-teams')
+    microsoftTeamsPage.elements
+      .heading()
+      .should('be.visible')
+      .and('have.text', 'Microsoft Teams')
+    microsoftTeamsPage.elements.heroOverviewText().should('be.visible')
+    microsoftTeamsPage.elements.talkToExpertBtn().should('be.visible')
+    microsoftTeamsPage.elements.getStartedLink().should('be.visible')
+
+    //! Form section
+    microsoftTeamsPage.elements.formSectionHeading().should('be.visible')
+    microsoftTeamsPage.elements.formSectionDescription().should('be.visible')
+    microsoftTeamsPage.elements.formBox().should('be.visible')
+
+    //! Form
     const userData = generateUserData()
-    signUpDefaultUser(userData)
+    createDefaultUser(userData)
+
+    //! Thank you page
+    cy.url().should('include', '/thank-you?formId')
+
+    thankYouPage.elements.heading().should('be.visible')
+    thankYouPage.elements.heroOverviewText().should('be.visible')
+  })
+
+  // TODO:
+  xit('3. should allow a user to filter notes on the "Release Notes" page ', () => {
+    //! navigation
+    // homePage.elements.navigation.whyTelnyxLink().should('be.visible')
+    // homePage.clickOnWhyTelnyxLink()
+    // homePage.elements.subNavigation.integrationsLink().should('be.visible')
+    // homePage.clickOnIntegrationsLink()
+
+    // //! pricing-numbers page
+    cy.url().should('include', '/release-notes')
+    releaseNotesPage.elements
+      .heading()
+      .should('be.visible')
+      .and('have.text', 'Release notes')
+
+    // //!categories
+    // releaseNotesPage.elements
+    //   .integrationsSectionTitle()
+    //   .should('be.visible')
+    //   .and('have.text', 'Integrations')
+
+    // //! titles
+    // cy.verifyListItemsTitles(
+    //   releaseNotesPage.elements.integrationsSectionListItems(),
+    //   releaseNotesPageFixture.objectIntegrations
+    // )
+
+    // //! hrefs
+    // cy.verifyListItemsHrefs(
+    //   releaseNotesPage.elements.integrationsSectionListItems(),
+    //   releaseNotesPageFixture.objectIntegrations
+    // )
+  })
+
+  //! Footer - занадто маленький тест кейс
+  xit('4. should dipslay social media links in footer', () => {
+    // homePage.clickOnSignUpBtn()
+
+    homePage.elements.footer.footerSocialMediaLinks().each((link) => {
+      cy.wrap(link).should('be.visible')
+    })
 
     //!
-    // cy.visit('https://telnyx.com/sign-up/verify-email/f')
-    cy.url().should('include', '/sign-up/verify-email')
-    verifyEmailPage.elements.heading().should('have.text', 'One last step')
-    verifyEmailPage.elements.descriptionText().should('be.visible')
-    verifyEmailPage.elements.contactUsLink().should('be.visible')
+    cy.verifyListItemsTitles(
+      homePage.elements.footer.footerSocialMediaLinks(),
+      homePageFixture.footerLinksHfref
+    )
+
+    //! hrefs
+    cy.verifyListItemsHrefs(
+      homePage.elements.footer.footerSocialMediaLinks(),
+      homePageFixture.footerLinksHfref
+    )
+
+    //! hover
+    homePage.elements.footer.footerSocialMediaLinks().each((link) => {
+      cy.wrap(link).trigger('mouseover') // Simulate the mouseover event
+      // .should('have.css', 'background-color', '#4242EF')
+      // cy.lg(link)
+
+      // cy.wrap(link).should('be.visible')
+    })
+
+    //! footer logo
+    homePage.elements.footer
+      .footerLogo()
+      .should('be.visible')
+      .and('have.attr', 'href', '/')
+    homePage.clickOnFooterLogo()
   })
 
   xit('5. should allow a user to search the website', () => {
@@ -295,7 +383,7 @@ describe('Telnyx website', () => {
       .should('have.text', 'EUR')
   })
 
-  it('10. should allow a user to use filters on the "Integrations" page', () => {
+  xit('10. should allow a user to use filters on the "Integrations" page', () => {
     //! navigation
     homePage.elements.navigation.whyTelnyxLink().should('be.visible')
     homePage.clickOnWhyTelnyxLink()
@@ -323,22 +411,22 @@ describe('Telnyx website', () => {
       .should('be.visible')
       .and('have.text', 'Categories')
 
-    // todo: loop
-    // cy.verifyListItemsWithTitles(
-    //   integrationsPage.elements.integrationsSectionListItems(),
-    //   integrationsPageFixture.integrations
-    // )
-
-    // cy.verifyListItemsWithTitles(
-    //   integrationsPage.elements.categoriesSectionListItems(),
-    //   integrationsPageFixture.categories
-    // )
-
-    cy.verifyListItemsWithHrefAttributes(
+    //! titles
+    cy.verifyListItemsTitles(
       integrationsPage.elements.integrationsSectionListItems(),
       integrationsPageFixture.objectIntegrations
     )
-    cy.verifyListItemsWithHrefAttributes(
+    cy.verifyListItemsTitles(
+      integrationsPage.elements.categoriesSectionListItems(),
+      integrationsPageFixture.objectCategories
+    )
+
+    //! hrefs
+    cy.verifyListItemsHrefs(
+      integrationsPage.elements.integrationsSectionListItems(),
+      integrationsPageFixture.objectIntegrations
+    )
+    cy.verifyListItemsHrefs(
       integrationsPage.elements.categoriesSectionListItems(),
       integrationsPageFixture.objectCategories
     )

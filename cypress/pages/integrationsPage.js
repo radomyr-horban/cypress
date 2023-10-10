@@ -24,16 +24,6 @@ class integrationsPage {
     categoriesSectionListItems: () =>
       cy.get('div[class="sidebar-section category-menu-section"] > ul > li a'),
   }
-
-  // clickOnPayAsYouGoBoxLink() {
-  //   this.elements.payAsYouGoBoxLink().click()
-  // }
-  //! set a country
-
-  // selectCurrencyOption(value) {
-  //   cy.get('button[id="currency-filter"]+div div[role="option"]')
-  //     .contains(`${value}`)
-  //     .click()
 }
 
 module.exports = new integrationsPage()

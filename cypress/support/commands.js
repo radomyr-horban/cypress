@@ -33,26 +33,20 @@ Cypress.Commands.add('clickRecaptcha', () => {
   })
 })
 
-Cypress.Commands.add('verifyListItemsWithTitles', (listSelector, titles) => {
-  listSelector.should('have.length', titles.length).each((li, index) => {
-    cy.wrap(li).should('contain.text', titles[index])
-  })
+Cypress.Commands.add('verifyListItemsHrefs', (listSelector, hrefObject) => {
+  listSelector
+    .should('have.length', Object.keys(hrefObject).length)
+    .each((li) => {
+      const title = li.text().trim()
+      const expectedHref = hrefObject[title]
+      cy.wrap(li).should('have.attr', 'href', expectedHref)
+    })
 })
-Cypress.Commands.add('verifyListItemsWithHref', (listSelector, hrefs) => {
-  listSelector.should('have.length', hrefs.length).each((li, index) => {
-    cy.wrap(li).should('contain.text', hrefs[index])
-  })
+Cypress.Commands.add('verifyListItemsTitles', (listSelector, titlesObject) => {
+  listSelector
+    .should('have.length', Object.keys(titlesObject).length)
+    .each((li) => {
+      const title = li.text().trim()
+      cy.wrap(title).should('be.oneOf', Object.keys(titlesObject))
+    })
 })
-
-Cypress.Commands.add(
-  'verifyListItemsWithHrefAttributes',
-  (listSelector, hrefObject) => {
-    listSelector
-      .should('have.length', Object.keys(hrefObject).length)
-      .each((li) => {
-        const title = li.text().trim()
-        const expectedHref = hrefObject[title]
-        cy.wrap(li).should('have.attr', 'href', expectedHref)
-      })
-  }
-)

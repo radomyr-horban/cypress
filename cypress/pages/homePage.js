@@ -7,6 +7,7 @@ class homePage {
       solutionsLink: () => cy.get('nav').contains('Solutions'),
       pricingLink: () => cy.get('nav').contains('Pricing'),
       whyTelnyxLink: () => cy.get('nav').contains('Why Telnyx'),
+      productsLink: () => cy.get('nav').contains('Products'),
     },
 
     subNavigation: {
@@ -30,12 +31,28 @@ class homePage {
           .get('[role="menuitem"]')
           .contains('Integrations')
           .invoke('removeAttr', 'target'),
+      microsoftTeamsLink: () =>
+        cy
+          .get('[role="menuitem"]')
+          .contains('Microsoft Teams')
+          .invoke('removeAttr', 'target'),
+    },
+
+    footer: {
+      // footerSocialMediaLinks: () => cy.get('footer a > svg > title'),
+      footerSocialMediaLinks: () =>
+        cy.get('footer [rel="noopener noreferrer"]'),
+
+      footerLogo: () => cy.get('footer svg > g'),
     },
   }
 
   //! clickers
   clickOnSignUpBtn() {
     this.elements.signUpBtn().click()
+  }
+  clickOnFooterLogo() {
+    this.elements.footerLogo().click()
   }
 
   //! navigation
@@ -51,6 +68,9 @@ class homePage {
   clickOnWhyTelnyxLink() {
     this.elements.navigation.whyTelnyxLink().click()
   }
+  clickOnProductsLinkLink() {
+    this.elements.navigation.productsLink().click()
+  }
 
   //! sub-navigation
   clickOnSupportCenterLink() {
@@ -64,6 +84,9 @@ class homePage {
   }
   clickOnIntegrationsLink() {
     this.elements.subNavigation.integrationsLink().click()
+  }
+  clickOnMicrosoftTeamsLink() {
+    this.elements.subNavigation.microsoftTeamsLink().click()
   }
 }
 

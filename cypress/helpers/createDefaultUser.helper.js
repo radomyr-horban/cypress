@@ -1,22 +1,21 @@
 // TODO: transform into a class
 
-import signUpPage from '../pages/signUpPage'
+import microsoftTeamsPage from '../pages/microsoftTeamsPage'
 
-// export async function createDefaultUser(signUpPage, userData) {
-export async function signUpDefaultUser(userData) {
-  signUpPage.clickOnEmailInput()
-  signUpPage.setEmailInput(userData.email)
+export async function createDefaultUser(userData) {
+  microsoftTeamsPage.clickOnFirstNameInput()
+  microsoftTeamsPage.setFirstNameInput(userData.firstName)
 
-  signUpPage.clickOnFirstNameInput()
-  signUpPage.setFirstNameInput(userData.firstName)
+  microsoftTeamsPage.clickOnLastNameInput()
+  microsoftTeamsPage.setLastNameInput(userData.lastName)
 
-  signUpPage.clickOnLastNameInput()
-  signUpPage.setLastNameInput(userData.firstName)
+  microsoftTeamsPage.clickOnCompanyEmailInput()
+  microsoftTeamsPage.setCompanyEmailInput(userData.email)
 
-  signUpPage.clickOnPasswordInput()
-  signUpPage.setPasswordInput(userData.password)
+  microsoftTeamsPage.clickOnCompanyWebsiteInput()
+  microsoftTeamsPage.setCompanyWebsiteInput(userData.website)
 
-  signUpPage.clickOnTermsAndConditionsCheckbox()
+  microsoftTeamsPage.selectOperator('0-50')
 
-  signUpPage.clickOnSignUpBtn()
+  microsoftTeamsPage.clickOnSubmitBtn()
 }
