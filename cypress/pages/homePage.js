@@ -6,6 +6,7 @@ class homePage {
       resourcesLink: () => cy.get('nav').contains('Resources'),
       solutionsLink: () => cy.get('nav').contains('Solutions'),
       pricingLink: () => cy.get('nav').contains('Pricing'),
+      whyTelnyxLink: () => cy.get('nav').contains('Why Telnyx'),
     },
 
     subNavigation: {
@@ -23,6 +24,11 @@ class homePage {
         cy
           .get('[role="menuitem"]')
           .contains('Global Numbers')
+          .invoke('removeAttr', 'target'),
+      integrationsLink: () =>
+        cy
+          .get('[role="menuitem"]')
+          .contains('Integrations')
           .invoke('removeAttr', 'target'),
     },
   }
@@ -42,6 +48,9 @@ class homePage {
   clickOnPricingLink() {
     this.elements.navigation.pricingLink().click()
   }
+  clickOnWhyTelnyxLink() {
+    this.elements.navigation.whyTelnyxLink().click()
+  }
 
   //! sub-navigation
   clickOnSupportCenterLink() {
@@ -52,6 +61,9 @@ class homePage {
   }
   clickOnGlobalNumbersLink() {
     this.elements.subNavigation.globalNumbersLink().click()
+  }
+  clickOnIntegrationsLink() {
+    this.elements.subNavigation.integrationsLink().click()
   }
 }
 

@@ -25,10 +25,6 @@ class numbersPricingPage {
       cy.get('button[id="country-filter"] + div'),
     currencyFilterDropdownList: () =>
       cy.get('button[id="currency-filter"] + div'),
-
-    //! canada option (make a method)
-    // filterDropdownOptionCanada: () =>
-    //   cy.get('div[role="option"] a').contains('Canada'),
   }
 
   clickOnPayAsYouGoBoxLink() {
@@ -39,7 +35,6 @@ class numbersPricingPage {
     this.elements.countryFilterDropdownBtn().click({ force: true })
   }
   clickOnCurrencyFilterDropdownBtn() {
-    // this.elements.currencyFilterDropdownBtn().click({ force: true })
     this.elements.currencyFilterDropdownBtn().click()
   }
 

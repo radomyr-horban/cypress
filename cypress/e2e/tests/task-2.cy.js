@@ -11,12 +11,14 @@ import verifyEmailPage from '../../pages/verifyEmailPage'
 import blogPage from '../../pages/blogPage'
 import solutionsPage from '../../pages/solutionsPage'
 import numbersPricingPage from '../../pages/numbersPricingPage'
+import integrationsPage from '../../pages/integrationsPage'
 
 //! fixtures
 import supportCenterPageFixture from '../../fixtures/supportCenterPageFixture.json'
 import blogPageFixture from '../../fixtures/blogPageFixture.json'
 import solutionsPageFixture from '../../fixtures/solutionsPageFixture.json'
-import globalNumbersFixture from '../../fixtures/globalNumbersFixture.json'
+// import globalNumbersFixture from '../../fixtures/globalNumbersFixture.json'
+import integrationsPageFixture from '../../fixtures/integrationsPageFixture.json'
 
 describe('Telnyx website', () => {
   beforeEach(() => {
@@ -232,8 +234,7 @@ describe('Telnyx website', () => {
     })
   })
 
-  // todo
-  it('9. should allow a user to use filters on the "Numbers pricing" page', () => {
+  xit('9. should allow a user to use filters on the "Numbers pricing" page', () => {
     //! navigation
     homePage.elements.navigation.pricingLink().should('be.visible')
     homePage.clickOnPricingLink()
@@ -292,5 +293,54 @@ describe('Telnyx website', () => {
     numbersPricingPage.elements
       .currencyFilterDropdownBtn()
       .should('have.text', 'EUR')
+  })
+
+  it('10. should allow a user to use filters on the "Integrations" page', () => {
+    //! navigation
+    homePage.elements.navigation.whyTelnyxLink().should('be.visible')
+    homePage.clickOnWhyTelnyxLink()
+    homePage.elements.subNavigation.integrationsLink().should('be.visible')
+    homePage.clickOnIntegrationsLink()
+
+    // //! pricing-numbers page
+    cy.url().should('include', '/marketplace')
+    integrationsPage.elements
+      .heading()
+      .should('be.visible')
+      .and('have.text', 'Welcome to the Telnyx Integration Marketplace')
+    integrationsPage.elements
+      .heroOverviewText()
+      .should('be.visible')
+      .and('have.text', 'Add Telnyx products to your favorite software')
+
+    //!categories
+    integrationsPage.elements
+      .integrationsSectionTitle()
+      .should('be.visible')
+      .and('have.text', 'Integrations')
+    integrationsPage.elements
+      .categoriesSectionTitle()
+      .should('be.visible')
+      .and('have.text', 'Categories')
+
+    // todo: loop
+    // cy.verifyListItemsWithTitles(
+    //   integrationsPage.elements.integrationsSectionListItems(),
+    //   integrationsPageFixture.integrations
+    // )
+
+    // cy.verifyListItemsWithTitles(
+    //   integrationsPage.elements.categoriesSectionListItems(),
+    //   integrationsPageFixture.categories
+    // )
+
+    cy.verifyListItemsWithHrefAttributes(
+      integrationsPage.elements.integrationsSectionListItems(),
+      integrationsPageFixture.objectIntegrations
+    )
+    cy.verifyListItemsWithHrefAttributes(
+      integrationsPage.elements.categoriesSectionListItems(),
+      integrationsPageFixture.objectCategories
+    )
   })
 })

@@ -1,0 +1,40 @@
+{
+  "integrations": ["Featured", "Popular", "Requested"],
+  "categories": [
+    "All",
+    "Automation",
+    "Calling",
+    "Collaboration",
+    "CRM",
+    "Ecommerce",
+    "Forms",
+    "Messaging",
+    "Sales & Marketing",
+    "Scheduling",
+    "Storage",
+    "Support",
+    "Systems Monitoring",
+    "Zapier"
+  ],
+  "objectIntegrations": {
+    "Featured": "/collection/featured",
+    "Popular": "/collection/popular",
+    "Requested": "/requested"
+  },
+  "objectCategories": {
+    "All": "/all",
+    "Automation": "/category/automation",
+    "Calling": "/category/calling",
+    "Collaboration": "/category/collaboration",
+    "CRM": "/category/crm",
+    "Ecommerce": "/category/ecommerce",
+    "Forms": "/category/forms",
+    "Messaging": "/category/messaging",
+    "Sales & Marketing": "/category/sales-and-marketing",
+    "Scheduling": "/category/scheduling",
+    "Storage": "/category/storage",
+    "Support": "/category/support",
+    "Systems Monitoring": "/category/systems-monitoring",
+    "Zapier": "/zaps"
+  }
+}
