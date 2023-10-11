@@ -131,43 +131,6 @@ describe('Telnyx website', () => {
     releaseNotesPage.elements.currentPageNumber().should('contain', '1')
   })
 
-  //! Footer - занадто маленький тест кейс
-  xit('should dipslay social media links in footer', () => {
-    // homePage.clickOnSignUpBtn()
-
-    homePage.elements.footer.footerSocialMediaLinks().each((link) => {
-      cy.wrap(link).should('be.visible')
-    })
-
-    //!
-    cy.verifyListItemsTitles(
-      homePage.elements.footer.footerSocialMediaLinks(),
-      homePageFixture.footerLinksHfref
-    )
-
-    //! hrefs
-    cy.verifyListItemsHrefs(
-      homePage.elements.footer.footerSocialMediaLinks(),
-      homePageFixture.footerLinksHfref
-    )
-
-    //! hover
-    homePage.elements.footer.footerSocialMediaLinks().each((link) => {
-      cy.wrap(link).trigger('mouseover') // Simulate the mouseover event
-      // .should('have.css', 'background-color', '#4242EF')
-      // cy.lg(link)
-
-      // cy.wrap(link).should('be.visible')
-    })
-
-    //! footer logo
-    homePage.elements.footer
-      .footerLogo()
-      .should('be.visible')
-      .and('have.attr', 'href', '/')
-    homePage.clickOnFooterLogo()
-  })
-
   it('4. should allow a user to search the website', () => {
     //! navigation
     homePage.elements.navigation.resourcesLink().should('be.visible')
