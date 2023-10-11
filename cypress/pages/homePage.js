@@ -39,7 +39,6 @@ class homePage {
     },
 
     footer: {
-      // footerSocialMediaLinks: () => cy.get('footer a > svg > title'),
       footerSocialMediaLinks: () =>
         cy.get('footer [rel="noopener noreferrer"]'),
 

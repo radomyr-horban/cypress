@@ -24,15 +24,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('clickRecaptcha', () => {
-  cy.window().then((win) => {
-    win.document
-      .querySelector("iframe[src*='recaptcha']")
-      .contentDocument.getElementById('recaptcha-token')
-      .click()
-  })
-})
-
 Cypress.Commands.add(
   'verifyListItemsWithTitlesArray',
   (listSelector, titlesArray) => {
@@ -53,6 +44,7 @@ Cypress.Commands.add('verifyListItemsHrefs', (listSelector, hrefObject) => {
       cy.wrap(li).should('have.attr', 'href', expectedHref)
     })
 })
+
 Cypress.Commands.add('verifyListItemsTitles', (listSelector, titlesObject) => {
   listSelector
     .should('have.length', Object.keys(titlesObject).length)

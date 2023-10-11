@@ -10,7 +10,6 @@ class solutionsPage {
     useCasesSectionHeading: () => cy.get('section[id="use-cases"] h2'),
 
     filterDropdownBtn: () => cy.get('button[id="department-filter"]'),
-    // filterDropdownList: () => cy.get('button[id="department-filter"]+div'),
     filterDropdownList: () => cy.get('div[role="listbox"]'),
     filterDropdownListOptions: () => cy.get('div[role="option"] a'),
   }

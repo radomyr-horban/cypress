@@ -8,8 +8,6 @@ class integrationsPage {
       cy.get('div[class="sidebar-section collection-menu-section"]'),
     integrationsSectionTitle: () =>
       cy.get('div[class="sidebar-section collection-menu-section"] > h4'),
-    // integrationsSectionList: () =>
-    //   cy.get('div[class="sidebar-section collection-menu-section"] > ul'),
     integrationsSectionListItems: () =>
       cy.get(
         'div[class="sidebar-section collection-menu-section"] > ul > li a'
@@ -19,8 +17,6 @@ class integrationsPage {
       cy.get('div[class="sidebar-section category-menu-section"]'),
     categoriesSectionTitle: () =>
       cy.get('div[class="sidebar-section category-menu-section"] > h4'),
-    // categoriesSectionList: () =>
-    //   cy.get('div[class="sidebar-section category-menu-section"] > ul'),
     categoriesSectionListItems: () =>
       cy.get('div[class="sidebar-section category-menu-section"] > ul > li a'),
   }
