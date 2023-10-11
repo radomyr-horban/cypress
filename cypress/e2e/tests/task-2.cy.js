@@ -26,7 +26,6 @@ import releaseNotesPageFixture from '../../fixtures/releaseNotesPage.fixture.jso
 
 describe('Telnyx website', () => {
   beforeEach(() => {
-    // cy.visit('https://telnyx.com/')
     cy.visit('/')
     acceptCookiesHelper()
   })
