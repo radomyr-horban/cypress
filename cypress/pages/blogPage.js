@@ -9,6 +9,11 @@ class blogPage {
     paginationNav: () => cy.get('nav[aria-label="pagination"]'),
     nextPageLink: () => cy.get('svg[aria-describedby="go-to-next-page"]'),
     nextPageLinkTitle: () => cy.get('title[id="go-to-next-page"]'),
+
+    //! article
+    readArticleLink: () => cy.get('main ul > li a').first(),
+    articleCategory: () => cy.get('main ul > li strong').first(),
+    articleTitle: () => cy.get('main ul > li h3').first(),
   }
 
   clickOnFilterDropdown() {
@@ -16,6 +21,10 @@ class blogPage {
   }
   clickOnNextPageBtn() {
     this.elements.nextPageLink().click()
+  }
+  //! article
+  clickOnReadArticleLink() {
+    this.elements.readArticleLink().click()
   }
 }
 

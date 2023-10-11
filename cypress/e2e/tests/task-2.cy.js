@@ -13,6 +13,7 @@ import integrationsPage from '../../pages/integrationsPage'
 import microsoftTeamsPage from '../../pages/microsoftTeamsPage'
 import releaseNotesPage from '../../pages/releaseNotesPage'
 import thankYouPage from '../../pages/thankYouPage'
+import blogArticlePage from '../../pages/blogArticlePage'
 
 //! fixtures
 import supportCenterPageFixture from '../../fixtures/supportCenterPage.fixture.json'
@@ -62,7 +63,7 @@ describe('Telnyx website', () => {
     thankYouPage.elements.heroOverviewText().should('be.visible')
   })
 
-  xit('3. should allow a user to filter notes on the "Release Notes" page ', () => {
+  xit('2. should allow a user to filter notes on the "Release Notes" page ', () => {
     //! navigation
     homePage.elements.footer.releaseNotesLink().scrollIntoView()
     homePage.elements.footer.releaseNotesLink().should('be.visible')
@@ -93,8 +94,7 @@ describe('Telnyx website', () => {
     cy.url().should('include', '/tag/api')
   })
 
-  // TODO:
-  xit('4. should show pagination on the "Release notes" page', () => {
+  xit('3. should display pagination on the "Release notes" page', () => {
     //! navigation
     homePage.elements.footer.releaseNotesLink().scrollIntoView()
     homePage.elements.footer.releaseNotesLink().should('be.visible')
@@ -132,7 +132,7 @@ describe('Telnyx website', () => {
   })
 
   //! Footer - занадто маленький тест кейс
-  xit('4. should dipslay social media links in footer', () => {
+  xit('should dipslay social media links in footer', () => {
     // homePage.clickOnSignUpBtn()
 
     homePage.elements.footer.footerSocialMediaLinks().each((link) => {
@@ -168,7 +168,7 @@ describe('Telnyx website', () => {
     homePage.clickOnFooterLogo()
   })
 
-  xit('5. should allow a user to search the website', () => {
+  xit('4. should allow a user to search the website', () => {
     //! navigation
     homePage.elements.navigation.resourcesLink().should('be.visible')
     homePage.clickOnResourcesLink()
@@ -221,7 +221,7 @@ describe('Telnyx website', () => {
     supportCenterPage.elements.searchInput().should('be.empty')
   })
 
-  xit('6. should allow a user to sort articles on the "Blog" page', () => {
+  xit('5. should allow a user to sort articles on the "Blog" page', () => {
     //! navigation
     homePage.elements.navigation.resourcesLink().should('be.visible')
     homePage.clickOnResourcesLink()
@@ -252,7 +252,7 @@ describe('Telnyx website', () => {
     })
   })
 
-  xit('7. should show pagination on the "Blog" page', () => {
+  xit('6. should display pagination on the "Blog" page', () => {
     //! navigation (the same check as in previous test case????)
     homePage.elements.navigation.resourcesLink().should('be.visible')
     homePage.clickOnResourcesLink()
@@ -275,6 +275,43 @@ describe('Telnyx website', () => {
     cy.url().should('include', '/page/2')
     blogPage.elements.heading().should('contain', 'Page 2')
     blogPage.elements.subHeading().should('contain', '(2)')
+  })
+
+  xit('7. should display main elements on the "Blog" article page', () => {
+    //! navigation
+    homePage.elements.navigation.resourcesLink().should('be.visible')
+    homePage.clickOnResourcesLink()
+    homePage.elements.subNavigation.blogLink().should('be.visible')
+    homePage.clickOnBlogLink()
+
+    //! blog page
+    cy.url().should('include', '/resources')
+    blogPage.elements.heading().should('contain', 'Blog')
+    blogPage.elements
+      .subHeading()
+      .should('contain', 'Browse our latest articles and updates')
+    blogPage.elements.filterDropdown().should('be.visible')
+
+    //! article card
+
+    blogPage.elements.articleCategory().should('be.visible')
+    blogPage.elements.articleTitle().should('be.visible')
+    blogPage.elements.readArticleLink().should('be.visible')
+
+    blogPage.clickOnReadArticleLink()
+
+    //! article page
+    blogArticlePage.elements.backToBlogLink().should('be.visible')
+    blogArticlePage.elements
+      .articleCategoryAndPublishDate()
+      .should('be.visible')
+      .and('contain', 'PUBLISHED')
+    blogArticlePage.elements.authorName().should('be.visible') //!
+    blogArticlePage.elements.shareOnSocialText().should('be.visible') //!
+
+    //! back to blog
+    blogArticlePage.clickOnBackToBlogLink()
+    blogPage.elements.heading().should('contain', 'Blog')
   })
 
   xit('8. should allow a user to filter departments on the "Solutions" page', () => {
