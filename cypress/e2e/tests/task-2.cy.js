@@ -30,7 +30,7 @@ describe('Telnyx website', () => {
     acceptCookiesHelper()
   })
 
-  xit('1. should allow a user to submit a form on the "Microsoft Teams" page ', () => {
+  it('1. should allow a user to submit a form on the "Microsoft Teams" page ', () => {
     //! navigation
     homePage.elements.navigation.productsLink().should('be.visible')
     homePage.clickOnProductsLinkLink()
@@ -63,7 +63,7 @@ describe('Telnyx website', () => {
     thankYouPage.elements.heroOverviewText().should('be.visible')
   })
 
-  xit('2. should allow a user to filter notes on the "Release Notes" page ', () => {
+  it('2. should allow a user to filter notes on the "Release Notes" page ', () => {
     //! navigation
     homePage.elements.footer.releaseNotesLink().scrollIntoView()
     homePage.elements.footer.releaseNotesLink().should('be.visible')
@@ -94,7 +94,7 @@ describe('Telnyx website', () => {
     cy.url().should('include', '/tag/api')
   })
 
-  xit('3. should display pagination on the "Release notes" page', () => {
+  it('3. should display pagination on the "Release notes" page', () => {
     //! navigation
     homePage.elements.footer.releaseNotesLink().scrollIntoView()
     homePage.elements.footer.releaseNotesLink().should('be.visible')
@@ -168,7 +168,7 @@ describe('Telnyx website', () => {
     homePage.clickOnFooterLogo()
   })
 
-  xit('4. should allow a user to search the website', () => {
+  it('4. should allow a user to search the website', () => {
     //! navigation
     homePage.elements.navigation.resourcesLink().should('be.visible')
     homePage.clickOnResourcesLink()
@@ -221,7 +221,7 @@ describe('Telnyx website', () => {
     supportCenterPage.elements.searchInput().should('be.empty')
   })
 
-  xit('5. should allow a user to sort articles on the "Blog" page', () => {
+  it('5. should allow a user to sort articles on the "Blog" page', () => {
     //! navigation
     homePage.elements.navigation.resourcesLink().should('be.visible')
     homePage.clickOnResourcesLink()
@@ -252,7 +252,7 @@ describe('Telnyx website', () => {
     })
   })
 
-  xit('6. should display pagination on the "Blog" page', () => {
+  it('6. should display pagination on the "Blog" page', () => {
     //! navigation (the same check as in previous test case????)
     homePage.elements.navigation.resourcesLink().should('be.visible')
     homePage.clickOnResourcesLink()
@@ -277,7 +277,7 @@ describe('Telnyx website', () => {
     blogPage.elements.subHeading().should('contain', '(2)')
   })
 
-  xit('7. should display main elements on the "Blog" article page', () => {
+  it('7. should display main elements on the "Blog" article page', () => {
     //! navigation
     homePage.elements.navigation.resourcesLink().should('be.visible')
     homePage.clickOnResourcesLink()
@@ -314,7 +314,7 @@ describe('Telnyx website', () => {
     blogPage.elements.heading().should('contain', 'Blog')
   })
 
-  xit('8. should allow a user to filter departments on the "Solutions" page', () => {
+  it('8. should allow a user to filter departments on the "Solutions" page', () => {
     //! navigation
     homePage.elements.navigation.solutionsLink().should('be.visible')
     homePage.clickOnSolutionsLink()
@@ -395,7 +395,7 @@ describe('Telnyx website', () => {
     })
   })
 
-  xit('9. should allow a user to use filters on the "Numbers pricing" page', () => {
+  it('9. should allow a user to use filters on the "Numbers pricing" page', () => {
     //! navigation
     homePage.elements.navigation.pricingLink().should('be.visible')
     homePage.clickOnPricingLink()
@@ -456,7 +456,7 @@ describe('Telnyx website', () => {
       .should('have.text', 'EUR')
   })
 
-  xit('10. should allow a user to use filters on the "Integrations" page', () => {
+  it('10. should allow a user to use filters on the "Integrations" page', () => {
     //! navigation
     homePage.elements.navigation.whyTelnyxLink().should('be.visible')
     homePage.clickOnWhyTelnyxLink()
