@@ -1,23 +1,42 @@
 class releaseNotesPage {
   elements = {
     heading: () => cy.get('main h1'),
-    subHeading: () => cy.get('header h2 > span'),
-    filterDropdown: () => cy.get('#blog-filter'),
-    // filterDropdownList: () => cy.get('#blog-filter+div'),
+    filterDropdown: () => cy.get('button[id="product-filter"]'),
     filterDropdownList: () => cy.get('div[role="listbox"]'),
-    filterDropdownListOptions: () => cy.get('div[role="option"] a'),
+    filterDropdownListOptions: () => cy.get('div[role="option"] span'),
+
+    featureRequestLink: () => cy.get('main a').contains('Feature Request'),
+    followUsOnTwitterLink: () =>
+      cy.get('main a').contains('Follow us on Twitter'),
+    filterDropdownList: () => cy.get('div[role="listbox"]'),
+
     //!pagination
     paginationNav: () => cy.get('nav[aria-label="pagination"]'),
     nextPageLink: () => cy.get('svg[aria-describedby="go-to-next-page"]'),
+    previousPageLink: () =>
+      cy.get('svg[aria-describedby="go-to-previous-page"]'),
 
     nextPageLinkTitle: () => cy.get('title[id="go-to-next-page"]'),
+    previousPageLinkTitle: () => cy.get('title[id="go-to-previous-page"]'),
+
+    //! cureent page number
+    currentPageNumber: () =>
+      cy.get('nav[aria-label="pagination"] > p > span').first(),
   }
 
   clickOnFilterDropdown() {
     this.elements.filterDropdown().click()
   }
-  clickOnNextPageBtn() {
+  selectProductOption(value) {
+    cy.get('div[role="option"] span').contains(`${value}`).click()
+  }
+
+  //! pagination
+  clickOnNextPageLink() {
     this.elements.nextPageLink().click()
+  }
+  clickOnPreviousPageLink() {
+    this.elements.previousPageLink().click()
   }
 }
 

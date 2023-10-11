@@ -44,6 +44,7 @@ class homePage {
         cy.get('footer [rel="noopener noreferrer"]'),
 
       footerLogo: () => cy.get('footer svg > g'),
+      releaseNotesLink: () => cy.get('footer a[href="/release-notes"]'),
     },
   }
 
@@ -70,6 +71,11 @@ class homePage {
   }
   clickOnProductsLinkLink() {
     this.elements.navigation.productsLink().click()
+  }
+
+  //! footer
+  clickOnReleaseNotesLink() {
+    this.elements.footer.releaseNotesLink().click()
   }
 
   //! sub-navigation

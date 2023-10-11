@@ -12,6 +12,7 @@ import numbersPricingPage from '../../pages/numbersPricingPage'
 import integrationsPage from '../../pages/integrationsPage'
 import microsoftTeamsPage from '../../pages/microsoftTeamsPage'
 import releaseNotesPage from '../../pages/releaseNotesPage'
+import thankYouPage from '../../pages/thankYouPage'
 
 //! fixtures
 import supportCenterPageFixture from '../../fixtures/supportCenterPage.fixture.json'
@@ -20,7 +21,7 @@ import solutionsPageFixture from '../../fixtures/solutionsPage.fixture.json'
 // import globalNumbersFixture from '../../fixtures/globalNumbers.fixture.json'
 import integrationsPageFixture from '../../fixtures/integrationsPage.fixture.json'
 import homePageFixture from '../../fixtures/homePage.fixture.json'
-import thankYouPage from '../../pages/thankYouPage'
+import releaseNotesPageFixture from '../../fixtures/releaseNotesPage.fixture.json'
 
 describe('Telnyx website', () => {
   beforeEach(() => {
@@ -61,38 +62,73 @@ describe('Telnyx website', () => {
     thankYouPage.elements.heroOverviewText().should('be.visible')
   })
 
-  // TODO:
   xit('3. should allow a user to filter notes on the "Release Notes" page ', () => {
     //! navigation
-    // homePage.elements.navigation.whyTelnyxLink().should('be.visible')
-    // homePage.clickOnWhyTelnyxLink()
-    // homePage.elements.subNavigation.integrationsLink().should('be.visible')
-    // homePage.clickOnIntegrationsLink()
+    homePage.elements.footer.releaseNotesLink().scrollIntoView()
+    homePage.elements.footer.releaseNotesLink().should('be.visible')
+    homePage.clickOnReleaseNotesLink()
 
-    // //! pricing-numbers page
+    //! Release Notes page
     cy.url().should('include', '/release-notes')
     releaseNotesPage.elements
       .heading()
       .should('be.visible')
       .and('have.text', 'Release notes')
+    releaseNotesPage.elements.filterDropdown().should('be.visible')
+    releaseNotesPage.elements.featureRequestLink().should('be.visible')
+    releaseNotesPage.elements.followUsOnTwitterLink().should('be.visible')
 
-    // //!categories
-    // releaseNotesPage.elements
-    //   .integrationsSectionTitle()
-    //   .should('be.visible')
-    //   .and('have.text', 'Integrations')
+    //! Filter
+    releaseNotesPage.clickOnFilterDropdown()
+    releaseNotesPage.elements.filterDropdownList().should('be.visible')
 
     // //! titles
-    // cy.verifyListItemsTitles(
-    //   releaseNotesPage.elements.integrationsSectionListItems(),
-    //   releaseNotesPageFixture.objectIntegrations
-    // )
+    cy.verifyListItemsWithTitlesArray(
+      releaseNotesPage.elements.filterDropdownListOptions(),
+      releaseNotesPageFixture.productOptions
+    )
 
-    // //! hrefs
-    // cy.verifyListItemsHrefs(
-    //   releaseNotesPage.elements.integrationsSectionListItems(),
-    //   releaseNotesPageFixture.objectIntegrations
-    // )
+    //! select option
+    releaseNotesPage.selectProductOption('API')
+    cy.url().should('include', '/tag/api')
+  })
+
+  // TODO:
+  xit('4. should show pagination on the "Release notes" page', () => {
+    //! navigation
+    homePage.elements.footer.releaseNotesLink().scrollIntoView()
+    homePage.elements.footer.releaseNotesLink().should('be.visible')
+    homePage.clickOnReleaseNotesLink()
+
+    //! Release Notes page
+    cy.url().should('include', '/release-notes')
+    releaseNotesPage.elements
+      .heading()
+      .should('be.visible')
+      .and('have.text', 'Release notes')
+    releaseNotesPage.elements.filterDropdown().should('be.visible')
+    releaseNotesPage.elements.featureRequestLink().should('be.visible')
+    releaseNotesPage.elements.followUsOnTwitterLink().should('be.visible')
+
+    //! pagination
+    releaseNotesPage.elements.paginationNav().should('be.visible')
+
+    //! page-1
+    releaseNotesPage.elements.currentPageNumber().should('contain', '1')
+    releaseNotesPage.elements
+      .nextPageLinkTitle()
+      .should('have.text', 'Go to next page')
+    releaseNotesPage.clickOnNextPageLink()
+    cy.url().should('include', '/page/2')
+    releaseNotesPage.elements.currentPageNumber().should('contain', '2')
+
+    //! page-2
+    releaseNotesPage.elements
+      .previousPageLinkTitle()
+      .should('have.text', 'Go to previous page')
+    releaseNotesPage.clickOnPreviousPageLink()
+    cy.url().should('include', '/page/1')
+    releaseNotesPage.elements.currentPageNumber().should('contain', '1')
   })
 
   //! Footer - занадто маленький тест кейс

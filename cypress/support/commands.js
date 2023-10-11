@@ -33,6 +33,17 @@ Cypress.Commands.add('clickRecaptcha', () => {
   })
 })
 
+Cypress.Commands.add(
+  'verifyListItemsWithTitlesArray',
+  (listSelector, titlesArray) => {
+    listSelector
+      .should('have.length', titlesArray.length)
+      .each((option, index) => {
+        cy.wrap(option).should('contain.text', titlesArray[index])
+      })
+  }
+)
+
 Cypress.Commands.add('verifyListItemsHrefs', (listSelector, hrefObject) => {
   listSelector
     .should('have.length', Object.keys(hrefObject).length)

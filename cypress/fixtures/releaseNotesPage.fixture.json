@@ -1,0 +1,21 @@
+{
+  "productOptions": [
+    "numbers",
+    "messaging",
+    "account",
+    "API",
+    "Mission Control Portal",
+    "WebRTC",
+    "Wireless",
+    "Network",
+    "Telephony",
+    "Reporting",
+    "Fax",
+    "Verify API",
+    "Video Rooms",
+    "10DLC",
+    "Voice API",
+    "Storage",
+    "WhatsApp"
+  ]
+}
