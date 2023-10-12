@@ -6,7 +6,7 @@ import homePage from '../../pages/homePage'
 import supportCenterPage from '../../pages/supportCenterPage'
 import supportCenterPageFixture from '../../fixtures/supportCenterPage.fixture.json'
 
-xit('4. should allow a user to search the website', () => {
+it('4. should allow a user to search the website', () => {
   cy.visit('/')
   acceptCookiesHelper()
 

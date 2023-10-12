@@ -6,6 +6,8 @@
   "scripts": {
     "cypress:run": "npx cypress run",
     "cypress:open": "npx cypress open",
+    "cypress:run:headed": "npx cypress run --headed",
+    "cypress:run:browser": "npx cypress run --browser",
     "cypress:dashboard": "npx cypress run --record"
   },
   "author": "",

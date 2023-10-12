@@ -7,7 +7,7 @@ import homePage from '../../pages/homePage'
 import microsoftTeamsPage from '../../pages/microsoftTeamsPage'
 import thankYouPage from '../../pages/thankYouPage'
 
-xit('1. should allow a user to submit a form on the "Microsoft Teams" page ', () => {
+it('1. should allow a user to submit a form on the "Microsoft Teams" page ', () => {
   cy.visit('/')
   acceptCookiesHelper()
 

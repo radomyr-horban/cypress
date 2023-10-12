@@ -12,7 +12,7 @@ describe('Telnyx website', () => {
     acceptCookiesHelper()
   })
 
-  xit('2. should allow a user to filter notes on the "Release Notes" page ', () => {
+  it('2. should allow a user to filter notes on the "Release Notes" page ', () => {
     //! navigation
     homePage.elements.footer.releaseNotesLink().scrollIntoView()
     homePage.elements.footer.releaseNotesLink().should('be.visible')
@@ -43,7 +43,7 @@ describe('Telnyx website', () => {
     cy.url().should('include', '/tag/api')
   })
 
-  xit('3. should display pagination on the "Release notes" page', () => {
+  it('3. should display pagination on the "Release notes" page', () => {
     //! navigation
     homePage.elements.footer.releaseNotesLink().scrollIntoView()
     homePage.elements.footer.releaseNotesLink().should('be.visible')

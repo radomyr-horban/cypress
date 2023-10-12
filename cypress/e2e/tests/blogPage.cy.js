@@ -12,7 +12,7 @@ describe('Blog page', () => {
     acceptCookiesHelper()
   })
 
-  xit('5. should allow a user to sort articles on the "Blog" page', () => {
+  it('5. should allow a user to sort articles on the "Blog" page', () => {
     //! navigation
     homePage.elements.navigation.resourcesLink().should('be.visible')
     homePage.clickOnResourcesLink()
@@ -43,7 +43,7 @@ describe('Blog page', () => {
     })
   })
 
-  xit('6. should display pagination on the "Blog" page', () => {
+  it('6. should display pagination on the "Blog" page', () => {
     //! navigation (the same check as in previous test case????)
     homePage.elements.navigation.resourcesLink().should('be.visible')
     homePage.clickOnResourcesLink()

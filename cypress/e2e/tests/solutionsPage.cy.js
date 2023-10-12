@@ -5,7 +5,7 @@ import homePage from '../../pages/homePage'
 import solutionsPage from '../../pages/solutionsPage'
 import solutionsPageFixture from '../../fixtures/solutionsPage.fixture.json'
 
-xit('8. should allow a user to filter departments on the "Solutions" page', () => {
+it('8. should allow a user to filter departments on the "Solutions" page', () => {
   cy.visit('/')
   acceptCookiesHelper()
 

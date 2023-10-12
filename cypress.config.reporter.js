@@ -3,11 +3,14 @@ const { defineConfig } = require('cypress')
 module.exports = defineConfig({
   projectId: '14q943',
 
-  e2e: {
-    baseUrl: 'https://telnyx.com',
-    setupNodeEvents(on, config) {},
+  reporter: 'junit',
+  reporterOptions: {
+    mochaFile: 'cypress/results/my-test-output.xml',
   },
 
-  viewportWidth: 1440,
-  viewportHeight: 900,
+  video: true,
+
+  e2e: {
+    baseUrl: 'https://telnyx.com',
+  },
 })

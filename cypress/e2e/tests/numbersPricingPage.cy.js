@@ -4,7 +4,7 @@ import { acceptCookiesHelper } from '../../helpers/acceptCookies.helper'
 import homePage from '../../pages/homePage'
 import numbersPricingPage from '../../pages/numbersPricingPage'
 
-xit('9. should allow a user to use filters on the "Numbers pricing" page', () => {
+it('9. should allow a user to use filters on the "Numbers pricing" page', () => {
   cy.visit('/')
   acceptCookiesHelper()
 
