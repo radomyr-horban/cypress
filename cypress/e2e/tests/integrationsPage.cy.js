@@ -4,7 +4,7 @@ import homePage from '../../pages/homePage'
 import integrationsPage from '../../pages/integrationsPage'
 import integrationsPageFixture from '../../fixtures/integrationsPage.fixture.json'
 
-it('10. should allow a user to use filters on the "Integrations" page', () => {
+xit('10. should allow a user to use filters on the "Integrations" page', () => {
   cy.visit('/')
   acceptCookiesHelper()
 

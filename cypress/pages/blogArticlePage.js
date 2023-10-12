@@ -1,5 +1,8 @@
 class blogArticlePage {
   elements = {
+    heading: () => cy.get('main h1'),
+    subHeading: () => cy.get('main > article > div p').first(),
+
     backToBlogLink: () => cy.get('a span').contains('Back to blog'),
     publishedDate: () => cy.get('strong').contains('PUBLISHED'),
     authorName: () => cy.get('div[data-author-initials]+p').contains('By'),

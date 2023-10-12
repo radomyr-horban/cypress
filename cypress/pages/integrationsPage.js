@@ -3,7 +3,6 @@ class integrationsPage {
     heading: () => cy.get('main h1'),
     heroOverviewText: () => cy.get('h2[class="description"]>p'),
 
-    //! sections
     integrationsSection: () =>
       cy.get('div[class="sidebar-section collection-menu-section"]'),
     integrationsSectionTitle: () =>

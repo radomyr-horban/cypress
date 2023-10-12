@@ -38,7 +38,6 @@ class numbersPricingPage {
     this.elements.currencyFilterDropdownBtn().click()
   }
 
-  //! set a country
   selectCountryOption(value) {
     cy.get('button[id="country-filter"]+div div[role="option"] a')
       .contains(`${value}`)

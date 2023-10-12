@@ -25,7 +25,6 @@ it('7. should display main elements on the "Blog" article page', () => {
   blogPage.elements.filterDropdown().should('be.visible')
 
   //! article card
-
   blogPage.elements.articleCategory().should('be.visible')
   blogPage.elements.articleTitle().should('be.visible')
   blogPage.elements.readArticleLink().should('be.visible')
@@ -33,6 +32,9 @@ it('7. should display main elements on the "Blog" article page', () => {
   blogPage.clickOnReadArticleLink()
 
   //! article page
+  blogArticlePage.elements.heading().should('be.visible')
+  blogArticlePage.elements.subHeading().should('be.visible')
+
   blogArticlePage.elements.backToBlogLink().should('be.visible')
   blogArticlePage.elements
     .articleCategoryAndPublishDate()

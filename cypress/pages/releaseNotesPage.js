@@ -10,7 +10,7 @@ class releaseNotesPage {
       cy.get('main a').contains('Follow us on Twitter'),
     filterDropdownList: () => cy.get('div[role="listbox"]'),
 
-    //!pagination
+    //! pagination
     paginationNav: () => cy.get('nav[aria-label="pagination"]'),
     nextPageLink: () => cy.get('svg[aria-describedby="go-to-next-page"]'),
     previousPageLink: () =>

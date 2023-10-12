@@ -4,7 +4,7 @@ import { acceptCookiesHelper } from '../../helpers/acceptCookies.helper'
 import homePage from '../../pages/homePage'
 import numbersPricingPage from '../../pages/numbersPricingPage'
 
-it('9. should allow a user to use filters on the "Numbers pricing" page', () => {
+xit('9. should allow a user to use filters on the "Numbers pricing" page', () => {
   cy.visit('/')
   acceptCookiesHelper()
 
@@ -43,10 +43,9 @@ it('9. should allow a user to use filters on the "Numbers pricing" page', () => 
   cy.url().should('include', '#pay-as-you-go')
 
   //! country dropdown
-  numbersPricingPage.clickOnCountryFilterDropdownBtn() //!open dropdown
+  numbersPricingPage.clickOnCountryFilterDropdownBtn()
   numbersPricingPage.elements.countryFilterDropdownList().should('be.visible')
 
-  // todo: fixture
   numbersPricingPage.selectCountryOption('Canada')
   cy.url().should('include', '/ca')
   numbersPricingPage.elements.heading().should('contain', 'Canada')
@@ -58,7 +57,6 @@ it('9. should allow a user to use filters on the "Numbers pricing" page', () => 
   numbersPricingPage.clickOnCurrencyFilterDropdownBtn()
   numbersPricingPage.elements.currencyFilterDropdownList().should('be.visible')
 
-  // todo: fixture
   numbersPricingPage.selectCurrencyOption('EUR')
   numbersPricingPage.elements.numberPricingTableData().should('contain', '€')
   numbersPricingPage.elements

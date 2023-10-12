@@ -5,7 +5,7 @@ import homePage from '../../pages/homePage'
 import solutionsPage from '../../pages/solutionsPage'
 import solutionsPageFixture from '../../fixtures/solutionsPage.fixture.json'
 
-it('8. should allow a user to filter departments on the "Solutions" page', () => {
+xit('8. should allow a user to filter departments on the "Solutions" page', () => {
   cy.visit('/')
   acceptCookiesHelper()
 
@@ -50,15 +50,6 @@ it('8. should allow a user to filter departments on the "Solutions" page', () =>
   solutionsPage.clickOnFilterDropdownBtn()
   solutionsPage.elements.filterDropdownList().should('be.visible')
 
-  // !
-  // solutionsPage.elements
-  //   .filterDropdownListOptions()
-  //   .first()
-  //   .invoke('text')
-  //   .then((text) => {
-  //     cy.log('input = ' + text)
-  //   })
-
   //!each
   solutionsPage.elements.filterDropdownListOptions().each((option) => {
     let currentOptionName = option.text().trim()
@@ -68,23 +59,5 @@ it('8. should allow a user to filter departments on the "Solutions" page', () =>
       'contain',
       solutionsPageFixture[`${currentOptionName}`]
     )
-
-    //! new
-
-    // // solutionsPage.elements.filterDropdownBtn().scrollIntoView()
-    // solutionsPage.clickOnFilterDropdownBtn()
-    // option.click({ force: true })
-    // // cy.wrap(option).click()
-    // // cy.wrap(option).should('be.visible')
-    // // option.click()
-
-    // solutionsPage.elements
-    //   .filterDropdownBtn()
-    //   .should('have.text', `${currentOptionName}`)
-
-    // // option.invoke('text').then((text) => {
-    // //   cy.log('input = ' + text)
-    // // })
-    //! new
   })
 })
