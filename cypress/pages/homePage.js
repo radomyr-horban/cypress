@@ -57,40 +57,51 @@ class homePage {
 
   //! navigation
   clickOnResourcesLink() {
+    this.elements.navigation.resourcesLink().should('be.visible')
     this.elements.navigation.resourcesLink().click()
   }
   clickOnSolutionsLink() {
+    this.elements.navigation.solutionsLink().should('be.visible')
     this.elements.navigation.solutionsLink().click()
   }
   clickOnPricingLink() {
+    this.elements.navigation.pricingLink().should('be.visible')
     this.elements.navigation.pricingLink().click()
   }
   clickOnWhyTelnyxLink() {
+    this.elements.navigation.whyTelnyxLink().should('be.visible')
     this.elements.navigation.whyTelnyxLink().click()
   }
   clickOnProductsLinkLink() {
+    this.elements.navigation.productsLink().should('be.visible')
     this.elements.navigation.productsLink().click()
   }
 
   //! footer
   clickOnReleaseNotesLink() {
+    this.elements.footer.releaseNotesLink().should('be.visible')
     this.elements.footer.releaseNotesLink().click()
   }
 
   //! sub-navigation
   clickOnSupportCenterLink() {
+    this.elements.subNavigation.supportCenterLink().should('be.visible')
     this.elements.subNavigation.supportCenterLink().click()
   }
   clickOnBlogLink() {
+    this.elements.subNavigation.blogLink().should('be.visible')
     this.elements.subNavigation.blogLink().click()
   }
   clickOnGlobalNumbersLink() {
+    this.elements.subNavigation.globalNumbersLink().should('be.visible')
     this.elements.subNavigation.globalNumbersLink().click()
   }
   clickOnIntegrationsLink() {
+    this.elements.subNavigation.integrationsLink().should('be.visible')
     this.elements.subNavigation.integrationsLink().click()
   }
   clickOnMicrosoftTeamsLink() {
+    this.elements.subNavigation.microsoftTeamsLink().should('be.visible')
     this.elements.subNavigation.microsoftTeamsLink().click()
   }
 }

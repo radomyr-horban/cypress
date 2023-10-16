@@ -1,16 +1,18 @@
 {
   "name": "task-2-cypress",
   "version": "1.0.0",
-  "description": "",
+  "description": "task-2-cypress",
   "main": "index.js",
   "scripts": {
-    "cypress:run": "npx cypress run",
-    "cypress:open": "npx cypress open",
-    "cypress:run:headed": "npx cypress run --headed",
-    "cypress:run:browser": "npx cypress run --browser",
-    "cypress:dashboard": "npx cypress run --record"
+    "cypress:open": "npx cypress open --config-file configs/cypress.config.js",
+    "cypress:run:headed": "npx cypress run --config-file configs/cypress.config.js --headed",
+    "cypress:run:browser": "npx cypress run --config-file configs/cypress.config.js --browser",
+    "cypress:dashboard": "npx cypress run --config-file configs/cypress.config.js --record",
+    "cypress:run": "npx cypress run --browser chrome --config-file configs/cypress.config.js",
+    "cypress:run:laptop": "npx cypress run --browser chrome --config-file configs/cypress.config.laptop.js",
+    "cypress:run:reporter": "npx cypress run --browser  chrome --config-file configs/cypress.config.reporter.js"
   },
-  "author": "",
+  "author": "Radomyr Horban",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^13.3.0"

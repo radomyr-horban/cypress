@@ -19,12 +19,13 @@ class releaseNotesPage {
     nextPageLinkTitle: () => cy.get('title[id="go-to-next-page"]'),
     previousPageLinkTitle: () => cy.get('title[id="go-to-previous-page"]'),
 
-    //! cureent page number
+    //! current page number
     currentPageNumber: () =>
       cy.get('nav[aria-label="pagination"] > p > span').first(),
   }
 
   clickOnFilterDropdown() {
+    this.elements.filterDropdown().should('be.visible')
     this.elements.filterDropdown().click()
   }
   selectProductOption(value) {
@@ -33,9 +34,13 @@ class releaseNotesPage {
 
   //! pagination
   clickOnNextPageLink() {
+    this.elements.nextPageLinkTitle().should('have.text', 'Go to next page')
     this.elements.nextPageLink().click()
   }
   clickOnPreviousPageLink() {
+    this.elements
+      .previousPageLinkTitle()
+      .should('have.text', 'Go to previous page')
     this.elements.previousPageLink().click()
   }
 }

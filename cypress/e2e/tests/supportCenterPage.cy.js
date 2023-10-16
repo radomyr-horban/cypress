@@ -4,60 +4,50 @@ import { acceptCookiesHelper } from '../../helpers/acceptCookies.helper'
 
 import homePage from '../../pages/homePage'
 import supportCenterPage from '../../pages/supportCenterPage'
-import supportCenterPageFixture from '../../fixtures/supportCenterPage.fixture.json'
 
-it('4. should allow a user to search the website', () => {
-  cy.visit('/')
-  acceptCookiesHelper()
+describe('Support Center page', () => {
+  beforeEach(() => {
+    cy.visit('/')
+    acceptCookiesHelper()
+    cy.fixture('supportCenterPage.fixture').as('supportCenterData')
+  })
 
-  //! navigation
-  homePage.elements.navigation.resourcesLink().should('be.visible')
-  homePage.clickOnResourcesLink()
-  homePage.elements.subNavigation.supportCenterLink().should('be.visible')
-  homePage.clickOnSupportCenterLink()
+  it('4. should allow a user to search the website', function () {
+    homePage.clickOnResourcesLink()
+    homePage.clickOnSupportCenterLink()
 
-  //! support page
-  cy.url().should('include', 'support')
-  supportCenterPage.elements.heading().should('be.visible')
-  supportCenterPage.elements.searchInput().should('be.visible')
+    cy.url().should('include', 'support')
+    supportCenterPage.elements.heading().should('be.visible')
 
-  supportCenterPage.elements
-    .searchInput()
-    .should('be.empty')
-    .and('have.attr', 'placeholder', 'Search for articles...')
-    .and('be.visible')
+    supportCenterPage.clickOnSearchInput()
+    supportCenterPage.elements.searchInput().should('be.focused')
 
-  supportCenterPage.clickOnSearchInput()
-  supportCenterPage.elements.searchInput().should('be.focused')
+    supportCenterPage.setSearchInput(`${this.supportCenterData.searchWord}`)
+    supportCenterPage.elements
+      .searchInput()
+      .should('have.value', `${this.supportCenterData.searchWord}`)
 
-  supportCenterPage.setSearchInput(`${supportCenterPageFixture.searchWord}`)
-  supportCenterPage.elements
-    .searchInput()
-    .should('have.value', `${supportCenterPageFixture.searchWord}`)
+    supportCenterPage.elements.searchInput().type('{enter}')
+    cy.url().should('include', `${this.supportCenterData.searchWord}`)
 
-  //! enter
-  supportCenterPage.elements.searchInput().type('{enter}')
-  cy.url().should('include', `${supportCenterPageFixture.searchWord}`)
+    supportCenterPage.elements
+      .searchResultsText()
+      .should('contain', `${this.supportCenterData.searchWord}`)
 
-  supportCenterPage.elements
-    .searchResultsText()
-    .should('contain', `${supportCenterPageFixture.searchWord}`)
+    supportCenterPage.elements
+      .searchInput()
+      .should('have.value', `${this.supportCenterData.searchWord}`)
 
-  supportCenterPage.elements
-    .searchInput()
-    .should('have.value', `${supportCenterPageFixture.searchWord}`)
+    supportCenterPage.elements
+      .searchResultCards()
+      .first()
+      .contains(`${this.supportCenterData.searchWord}`, {
+        matchCase: false,
+      })
 
-  supportCenterPage.elements
-    .searchResultCards()
-    .first()
-    .contains(`${supportCenterPageFixture.searchWord}`, {
-      matchCase: false,
-    })
+    supportCenterPage.clickOnSearchClearBtn()
 
-  //! clear search
-  supportCenterPage.elements.searchClearBtn().scrollIntoView()
-  supportCenterPage.clickOnSearchClearBtn()
-
-  cy.url().should('not.contain', `${supportCenterPageFixture.searchWord}`)
-  supportCenterPage.elements.searchInput().should('be.empty')
+    cy.url().should('not.contain', `${this.supportCenterData.searchWord}`)
+    supportCenterPage.elements.searchInput().should('be.empty')
+  })
 })

@@ -17,13 +17,16 @@ class blogPage {
   }
 
   clickOnFilterDropdown() {
+    this.elements.filterDropdown().should('be.visible')
     this.elements.filterDropdown().click()
   }
   clickOnNextPageBtn() {
+    this.elements.nextPageLinkTitle().should('have.text', 'Go to next page')
     this.elements.nextPageLink().click()
   }
   //! article
   clickOnReadArticleLink() {
+    this.elements.readArticleLink().should('be.visible')
     this.elements.readArticleLink().click()
   }
 }

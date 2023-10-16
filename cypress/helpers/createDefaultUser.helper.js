@@ -1,7 +1,6 @@
-// TODO: transform into a class
-
 import microsoftTeamsPage from '../pages/microsoftTeamsPage'
 
+// todo: extend `page` class (reuse page class methods)
 export async function createDefaultUser(userData) {
   microsoftTeamsPage.clickOnFirstNameInput()
   microsoftTeamsPage.setFirstNameInput(userData.firstName)

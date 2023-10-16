@@ -8,9 +8,15 @@ class supportCenterPage {
   }
 
   clickOnSearchInput() {
+    this.elements
+      .searchInput()
+      .should('be.visible')
+      .and('be.empty')
+      .and('have.attr', 'placeholder', 'Search for articles...')
     this.elements.searchInput().click()
   }
   clickOnSearchClearBtn() {
+    this.elements.searchClearBtn().should('be.visible')
     this.elements.searchClearBtn().click()
   }
 

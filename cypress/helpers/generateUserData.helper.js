@@ -1,5 +1,3 @@
-// TODO: transform into a class
-
 export function generateUserData() {
   const randomString = (length) => {
     let result = ''

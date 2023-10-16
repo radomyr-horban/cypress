@@ -28,13 +28,23 @@ class numbersPricingPage {
   }
 
   clickOnPayAsYouGoBoxLink() {
+    this.elements.payAsYouGoBoxLink().should('be.visible')
     this.elements.payAsYouGoBoxLink().click()
   }
 
   clickOnCountryFilterDropdownBtn() {
-    this.elements.countryFilterDropdownBtn().click({ force: true })
+    this.elements
+      .countryFilterDropdownBtn()
+      .should('be.visible')
+      .and('have.text', 'United States')
+    this.elements.countryFilterDropdownBtn().click()
   }
+
   clickOnCurrencyFilterDropdownBtn() {
+    this.elements
+      .currencyFilterDropdownBtn()
+      .should('be.visible')
+      .and('have.text', 'USD')
     this.elements.currencyFilterDropdownBtn().click()
   }
 

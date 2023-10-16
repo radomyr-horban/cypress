@@ -15,9 +15,14 @@ class solutionsPage {
   }
 
   clickOnSeeUseCasesLink() {
+    this.elements.seeUseCasesLink().should('be.visible')
     this.elements.seeUseCasesLink().click()
   }
   clickOnFilterDropdownBtn() {
+    this.elements
+      .filterDropdownBtn()
+      .should('be.visible')
+      .and('have.text', 'Filter by department')
     this.elements.filterDropdownBtn().click()
   }
 }

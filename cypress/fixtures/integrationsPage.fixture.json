@@ -1,27 +1,10 @@
 {
-  "integrations": ["Featured", "Popular", "Requested"],
-  "categories": [
-    "All",
-    "Automation",
-    "Calling",
-    "Collaboration",
-    "CRM",
-    "Ecommerce",
-    "Forms",
-    "Messaging",
-    "Sales & Marketing",
-    "Scheduling",
-    "Storage",
-    "Support",
-    "Systems Monitoring",
-    "Zapier"
-  ],
-  "objectIntegrations": {
+  "Integrations": {
     "Featured": "/collection/featured",
     "Popular": "/collection/popular",
     "Requested": "/requested"
   },
-  "objectCategories": {
+  "Categories": {
     "All": "/all",
     "Automation": "/category/automation",
     "Calling": "/category/calling",
