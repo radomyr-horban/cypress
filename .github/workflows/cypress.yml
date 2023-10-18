@@ -4,28 +4,17 @@ on: [push]
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        uses: cypress-io/github-action@v6
-        with:
-          runTests: false
-
-      - name: Setup Node version
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.18.0
-
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          install: false
-          spec: 'cypress/e2e/tests/**/*'
           config-file: configs/cypress.config.js
+          spec: 'cypress/e2e/tests/**/*'
           record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
