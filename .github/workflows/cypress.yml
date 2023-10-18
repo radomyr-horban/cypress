@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-22.04
 
     # container:
-    #   image: cypress/base:18.16.0
+    #   # image: cypress/base:18.16.0
+    #   image: cypress/browsers:latest
 
     steps:
       - name: Checkout
@@ -30,6 +31,7 @@ jobs:
           config-file: configs/cypress.config.js
           spec: 'cypress/e2e/tests/**/*'
           record: true
+          # browser: chrome
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
