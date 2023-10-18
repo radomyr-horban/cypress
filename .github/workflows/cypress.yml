@@ -18,10 +18,10 @@ jobs:
       #   with:
       #     runTests: false
 
-      - name: Setup Node version
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.18.0
+      # - name: Setup Node version
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18.18.0
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
